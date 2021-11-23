@@ -1,0 +1,276 @@
+/* Sidebar */
+.sidebar {
+    padding: 80px 20px 100px 50px;
+    width: 350px;
+    min-height: 100vh;
+    border-right: 1px solid #C4C4C4; /* Линия справа от текста */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    
+}
+
+.sidebar-logoUser{
+    margin-bottom: 150px;
+    font-size: 20px;
+    font-style: 'HelveticaNeueCyr';
+    color: white;
+
+}
+
+.sidebar-logoUser img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    object-fit: none;
+}
+
+
+.sidebar-setting {
+    margin-top: auto;
+}
+
+
+
+
+/* Nav */
+
+
+
+.nav-list {
+    font-size: 19px;
+
+}
+
+
+
+.nav-list li {
+    margin-bottom: 80px;
+
+
+}
+
+.nav-list a {
+    transition: color 0.2s ease-in;
+}
+
+.nav-list a:hover {
+    color: white;
+
+}
+
+.nav-list img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    width: 25px;
+    height: auto;
+    object-fit: none;
+
+}
+
+.nav-list p {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/* Setting */
+
+.setting {
+    font-size: 19px;
+    
+}
+
+.setting-icon {
+    width: 25px;
+    height: auto;
+    object-fit: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.setting p{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.setting {
+    transition: color 0.2s ease-in;
+}
+
+.setting:hover {
+    color: white;
+
+}
+
+
+
+
+
+
+/* main-content */
+
+.header-biblio {
+    padding-top: 100px;
+    width: 100%;
+
+}
+
+
+
+
+/* HEDEAR sort */
+.header{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.sort_filter {
+    margin-left: 54px;
+    display: flex;
+    width: 430px;
+    vertical-align: middle;
+    margin-right: auto;
+}
+
+
+.header-sort p {
+    padding-top: 7px;
+}
+
+.header-filter p {
+    padding: 0 40px;
+    padding-top: 7px;
+}
+
+
+
+.header-orientation {
+    display: flex;
+}
+
+.header-orientation button {
+    padding: 0 25px;
+}
+
+/* Button add Episod */
+.addEpisod {
+    width: 300px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #C4C4C4;
+    margin-right: 52px;
+    margin-left: 20px;
+}
+
+.addEpisod-label {
+    display: flex;
+    vertical-align: middle;
+}
+
+.addEpisod-icon {
+    padding-top: 2px;
+    margin-left: 20px;
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.addEpisod-push {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 5px;
+    
+}
+
+/* Catalog Episods */
+.catalog {
+}
+
+.catalog-episod {
+    display: flex;
+    margin-top: 80px;
+    margin-left: 54px;
+    
+}
+
+
+.episod {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.oblogka-episod {
+
+}
+
+.oblojka {
+
+}
+
+.title-episod {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.title-episod h3 {
+    display: inline-block;
+}
+
+.options-items{
+    display: inline-block;
+    margin-left: 72px;
+    padding-bottom: 5px;
+}
+
+
+
+.panel-episod {
+
+}
+
+.panel {
+
+}
+
+.play-btn {
+    transition: color 0.2s ease-in;
+}
+
+.play-btn :hover {
+    color: rgb(34, 184, 34);
+}
+
+.red-btn {
+    transition: color 0.2s ease-in;
+}
+
+.red-btn :hover {
+    color: #E729DF;
+}
+
+
+.play-btn {
+    display: flex;
+}
+
+.panel img {
+    display: inline-block;
+    vertical-align: middle;
+    
+}
+
+.panel p {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.panel li {
+    margin-bottom: 10px;
+}
