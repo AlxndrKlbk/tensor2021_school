@@ -45,6 +45,7 @@ class Scenario:
         self._enemies_list = None
         self._accessible_for_all = False
         self._text_nodes = None
+        self.__description = None
         self._active_user = None
 
     def __hash__(self):
