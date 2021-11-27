@@ -9,13 +9,15 @@ class Postgres:
 
     @classmethod
     def _connect(cls):
-        return psycopg2.connect(cls._DATABASE)
+        return psycopg2.connect(**cls._DATABASE)
 
     @classmethod
     def query(cls, sql, *args):
-        cursor = cls._connect()
+        connection = cls._connect()
+        cursor = connection.cursor()
         cursor.execute(sql, *args)
-        cursor.commit()
+        connection.commit()
+        cursor.close()
         return cursor
 
     def _create_record(self, pk):

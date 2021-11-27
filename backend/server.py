@@ -6,6 +6,8 @@ from db_config import config
 
 postgress = Postgres()
 
-postgress.query(f"INSERT INTO users VALUES ('user_nickname', 'email', 'upassword')",
-                ('Sanya', 'sanya@mail.ru', 'hardpass'))
+postgress.query("INSERT INTO users (user_nickname, email, upassword) VALUES (%s,%s,%s)",
+                ('Sanya', 'sanya@mail.ru', 'hardpass1'))
 
+postgress.query("INSERT INTO users (user_nickname, email, upassword) VALUES (%s,%s,%s)",
+                ('Boba', 'boba@mail.ru', 'hardpass1'))
