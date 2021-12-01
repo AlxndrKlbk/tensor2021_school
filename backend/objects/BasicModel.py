@@ -20,6 +20,7 @@ class Postgres:
         cursor.close()
         return cursor
 
+    @classmethod
     def _create_record(self, pk):
         values_from_mapping = " "
         for keys, val in self.__dict__.items():
@@ -29,6 +30,7 @@ class Postgres:
         print(sql_sentence)
         self.query(sql_sentence, values_from_mapping)
 
+    @classmethod
     def _update_record(self, pk, data):
         "data - словарь, в котором содержится имя столбца и значение, которое в него надо вписать"
         table_name = self._TABLE
@@ -36,11 +38,13 @@ class Postgres:
             sql_sentence = f"UPDATE {table_name} SET {key} = {val} where id = {pk}  "
             self.query(sql_sentence, val)
 
+    @classmethod
     def _read_record(self, pk):
         table_name = self._TABLE
         sql_sentence = f"SELECT * from {table_name} where id = {pk}"
         print(self.query(sql_sentence, None))
 
+    @classmethod
     def _delite_record(self, pk):
         table_name = self._TABLE
         sql_sentence = f"DELETE from {table_name} where id = {pk}"

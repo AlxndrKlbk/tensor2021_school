@@ -1,6 +1,9 @@
+from BasicModel import Postgres
 
 
-class User:
+class User(Postgres):
+    _TABLE = "Users"
+    _FIELDS_MAPPING = None
 
     def __init__(self, fname, lname, ID, city, nick_name, phone_number=None):
         self._ID = ID
@@ -35,7 +38,9 @@ class User:
         pass
 
 
-class Scenario:
+class Scenario(Postgres):
+    _TABLE = "Scenarios"
+    _FIELDS_MAPPING = None
 
     def __init__(self):
         self._name = None
@@ -71,7 +76,9 @@ class Scenario:
         pass
 
 
-class Room:
+class Room(Postgres):
+    _TABLE = "GamesLocations"
+    _FIELDS_MAPPING = None
 
     def __init__(self):
         self._description = None
@@ -82,7 +89,9 @@ class Room:
         pass
 
 
-class Enemies:
+class Enemies(Postgres):
+    _TABLE = "Enemies"
+    _FIELDS_MAPPING = None
 
     def __init__(self):
         self._name = None
