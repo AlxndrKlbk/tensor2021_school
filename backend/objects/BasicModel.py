@@ -16,9 +16,14 @@ class Postgres:
         connection = cls._connect()
         cursor = connection.cursor()
         cursor.execute(sql, *args)
+        try:
+            result = cursor.fetchall()
+        except psycopg2.ProgrammingError:
+            result = None
+
         connection.commit()
         cursor.close()
-        return cursor
+        return result
 
     @classmethod
     def _create_record(self, pk):
@@ -45,9 +50,9 @@ class Postgres:
         print(self.query(sql_sentence, None))
 
     @classmethod
-    def _delite_record(self, pk):
+    def _delite_record(self,col_name ,pk):
         table_name = self._TABLE
-        sql_sentence = f"DELETE from {table_name} where id = {pk}"
+        sql_sentence = f"DELETE from {table_name} WHERE {col_name} = '{pk}'"
         self.query(sql_sentence, None)
 
     @classmethod
@@ -70,6 +75,11 @@ class Postgres:
         conn.close()
         return result
 
+    @classmethod
+    def find_entity(self, column_name, val):
+        table_name = self._TABLE
+        sql_sentence = f"SELECT * from {table_name} WHERE {column_name} = '{val}'"
+        return self.query(sql_sentence, None)
 
 if __name__ == '__main__':
 

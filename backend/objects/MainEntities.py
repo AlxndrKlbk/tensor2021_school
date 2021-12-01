@@ -1,34 +1,23 @@
-from BasicModel import Postgres
+from backend.objects.BasicModel import Postgres
 
 
 class User(Postgres):
     _TABLE = "Users"
     _FIELDS_MAPPING = None
 
-    def __init__(self, fname, lname, ID, city, nick_name, phone_number=None):
-        self._ID = ID
-        self._first_name = fname
-        self._last_name = lname
+    def __init__(self, nick_name):
         self._nickname = nick_name
-        self._city = city
-        self._prone_number = phone_number
         self._dungeons_ID = None
-        self._games_count = None
-
-    def _get_name(self):
-        s = ' '
-        return s.join((self._first_name, self._last_name))
 
     def show_person(self):
         print(f'Nickname: {self._nickname}')
-        print(f'Name: {self._get_name()}')
-        print(f'ID: {self._ID}')
-        print(f'City: {self._city}')
 
     def update_user(self):
         pass
 
-    def change_nickname(self):
+    def change_nickname(self, new_nickname):
+
+        self._nickname = new_nickname
         pass
 
     def get_fields(self):
