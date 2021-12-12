@@ -45,14 +45,9 @@ class Scenario(Postgres):
         return hash((self._name, self._active_user))
 
     @classmethod
-    def get_scenario_json(self, db_id):
-        """
-        This function take json representation of scenario from db
-
-        :param db_id: scenraio id in db
-        :return: json representation of object
-        """
-        return None
+    async def get_scenario_list(self):
+        sql_sentence = f"SELECT * from {self._TABLE} LIMIT 20"
+        return self.query(sql_sentence)
 
     @classmethod
     def update_scenatio(self, updates):

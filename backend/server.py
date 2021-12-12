@@ -1,21 +1,36 @@
-import aiohttp
-from objects.MainEntities import Scenario, Enemies, Room, User
-from objects.BasicModel import Postgres
-from db_config import config
+import json
+from functools import partial
+from objects.MainEntities import Scenario, Enemies, Room
+from aiohttp import web
+import aiofiles
+import aiohttp_cors
+from asgiref.sync import sync_to_async
+
+routes = web.RouteTableDef()
+rus_json_dumps = partial(json.dumps, ensure_ascii=False)
+
+@routes.get('/scenarios_list')
+async def scenarios_list(request):
+    scenario = Scenario()
+    result = await scenario.get_scenario_list()
+
+    return web.json_response({'result': result}, dumps=rus_json_dumps)
 
 
-postgress = Postgres()
+if __name__ == '__main__':
+    app = web.Application()
 
-postgress.query("INSERT INTO users (user_nickname, email, upassword) VALUES (%s,%s,%s) ON CONFLICT DO NOTHING RETURNING"
-                " user_id",
-                ('Sanya', 'sanya@mail.ru', 'hardpass1'))
+    # routes.static('/script', 'static/script')
+    # routes.static('/css', 'static/css')
+    app.add_routes(routes)
 
-postgress.query("INSERT INTO users (user_nickname, email, upassword) VALUES (%s,%s,%s) ON CONFLICT DO NOTHING RETURNING"
-                " user_id",
-                ('Boba', 'boba@mail.ru', 'hardpass1'))
+    cors = aiohttp_cors.setup(app, defaults={
+        '*': aiohttp_cors.ResourceOptions(allow_credentials=True, expose_headers="*", allow_headers="*")})
+    for route in app.router.routes():
+        cors.add(route)
 
-user = User("Sanya")
+    web.run_app(app, host='127.0.0.1', port=8888)
 
-print(user._nickname)
-PK = user.find_entity('user_nickname', user._nickname)[0][0]
-user._delite_record('user_id', PK)
+# if __name__ == "__main__":
+#     test = scenarios_list("nothing")
+#     print(test)

@@ -11,7 +11,7 @@ CREATE TABLE Users(
 CREATE TABLE Scenarios(
     Scenarios_id SERIAL PRIMARY KEY,
     description VARCHAR(100) NOT NULL,
-    structure jsonb UNIQUE,
+    structure jsonb,
     rooms_id VARCHAR(40)
 );
 
