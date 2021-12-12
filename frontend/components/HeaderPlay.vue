@@ -4,16 +4,12 @@
           Сценарий № 1
       </div>
       <div class="list_location">
-        <CardLocation/>
-        <CardLocation/>
-        <CardLocation/>
       </div>
         
   </div>
 </template>
 
 <script>
-import CardLocation from "./CardLocation.vue";
 export default {
     
 }
