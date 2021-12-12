@@ -23,7 +23,7 @@ export default {
 
 <style>
 .library_scenario {
-    padding-left: 300px;
+    padding-left: 350px;
     padding-top: 110px;
     padding-right: 50px;
     display: flex;

@@ -48,7 +48,6 @@
           Локации
       </div>
       <div class="list_location_container">
-          <CardLocation/>
 
       </div>
   </div>
@@ -56,9 +55,7 @@
 </template>
 
 <script>
-import CardLocation from "./CardLocation.vue";
 export default {
-    components: { CardLocation }
 }
 </script>
 
