@@ -4,13 +4,13 @@
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_location">
-      <input v-model="nameLocation" class="input is-medium" type="text" placeholder="Введите название локации">
+      <input v-model="location.nameLocation" class="input is-medium" type="text" placeholder="Введите название локации">
     </div>
     <div class="input_article_location">
       <div class="input_article_location_title">
         ОПИСАНИЕ К ЛОКАЦИИ
       </div>
-      <textarea v-model="articleLocation" class="textarea" placeholder="Введите описание локации">
+      <textarea v-model="location.articleLocation" class="textarea" placeholder="Введите описание локации">
         </textarea>
     </div>
     <div class="unit_container">
@@ -22,7 +22,7 @@
           +
         </button>
       </div>
-      <UnitTable :unitItems="unitItems" />
+      <UnitTable :unitItems="location.unitItems" />
     </div>
   </div>
 </template>
@@ -33,27 +33,28 @@ import store from "~/store/Index";
 export default {
   data() {
     return {
-      unitItems: [],
-      nameLocation: '',
-      articleLocation: '',
-      location: []
+      location: {
+        nameLocation: '',
+        articleLocation: '',
+        unitItems: [],
+      },
+      
     }
   },
 
   methods: {
     createLocation() {
-      const newLocation = {
-        id: Date.now(),
-        nameLocation: this.nameLocation,
-        articleLocation: this.articleLocation,
-        unitItems: this.unitItems
+      this.location.id= Date.now();
+      this.$emit('createLocation', this.location);
+      this.location = {
+        nameLocation: '',
+        articleLocation: '',
+        unitItems: [],
       }
 
-      this.location.push(newLocation)
-
-      this.$store.commit('addLocation', {
-        location: this.location
-      })
+      // this.$store.commit('addLocation', {
+      //   location: this.location
+      // })
       this.$router.push('createScenario')
     },
 
@@ -69,7 +70,7 @@ export default {
       })
     },
     saveUnit(unitObject) {
-      this.unitItems.push(unitObject);
+      this.location.unitItems.push(unitObject);
 
       // this.$axios.$post(`...`, { 
       //     headers: {

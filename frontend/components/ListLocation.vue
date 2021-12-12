@@ -1,10 +1,10 @@
 <template>
-  <div class="location_card_item"  >
+  <div class="location_card_item">
     <div class="location_card_cover">
 
     </div>
     <div class="location_card_title">
-      234324234324
+      sdfsdfsdfsdf
     </div>
     <div class="remake_location">
       <div class="remake_location_icon">
@@ -19,12 +19,6 @@
 
 <script>
 export default {
-  props: {
-    listLocation: {
-      type: Array,
-      required: true,
-    }
-  }
 }
 </script>
 

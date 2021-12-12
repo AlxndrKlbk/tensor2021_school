@@ -1,5 +1,5 @@
 <template>
-  <CreateLocation/>
+  <CreateLocation @create="createLocation"/>
 </template>
 
 <script>

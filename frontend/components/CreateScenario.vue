@@ -30,7 +30,6 @@
   import store from '~/store/Index';
 import ListLocation from './ListLocation.vue';
   export default {
-    
 
     components: {
     ListLocation
@@ -53,7 +52,11 @@ import ListLocation from './ListLocation.vue';
         this.$store.commit('increment', {
           nameScenario: this.nameScenario
         })
-      }
+      },
+
+      createLocation(location) {
+        console.log(location)
+      },
     }
   };
 
