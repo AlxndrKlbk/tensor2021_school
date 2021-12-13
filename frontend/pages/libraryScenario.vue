@@ -1,24 +1,24 @@
 <template>
-    <LibraryScenario :itemsProp="items" />
+  <LibraryScenario :items-prop="items" />
 </template>
 
 <script>
-import LibraryScenario from "~/components/LibraryScenario.vue";
+import LibraryScenario from '~/components/LibraryScenario.vue'
 export default {
-    components: { LibraryScenario },
+  components: { LibraryScenario },
 
-    async asyncData({ $axios }) {
-     const result = await $axios.get(`https://frontend-test.idaproject.com/api/product`);
-     
-     return {
-       items: result.data
-     };
-   },
-   data () {
-       return {
-           items: []
-       }
-   }
+  async asyncData ({ $axios }) {
+    const result = await $axios.get('https://frontend-test.idaproject.com/api/product')
+
+    return {
+      items: result.data
+    }
+  },
+  data () {
+    return {
+      items: []
+    }
+  }
 }
 </script>
 

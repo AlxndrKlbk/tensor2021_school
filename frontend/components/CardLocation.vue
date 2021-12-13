@@ -1,10 +1,8 @@
 <template>
   <div class="location_card_item">
-    <div class="location_card_cover">
-
-    </div>
+    <div class="location_card_cover" />
     <div class="location_card_title">
-      sdfsdfsdfsdf
+      {{ $store.state.listLocation.nameLocation }}
     </div>
     <div class="remake_location">
       <div class="remake_location_icon">
@@ -19,6 +17,7 @@
 
 <script>
 export default {
+
 }
 </script>
 

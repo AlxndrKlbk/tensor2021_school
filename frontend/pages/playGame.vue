@@ -1,15 +1,15 @@
 <template>
-<div>
-  <HeaderPlay/>
-  <PlayGame/>
-</div>
+  <div>
+    <HeaderPlay />
+    <PlayGame />
+  </div>
 </template>
 
 <script>
-import HeaderPlay from "~/components/HeaderPlay.vue";
+import HeaderPlay from '~/components/HeaderPlay.vue'
 export default {
-    layout: "play",
-    components: { HeaderPlay }
+  components: { HeaderPlay },
+  layout: 'play'
 }
 </script>
 

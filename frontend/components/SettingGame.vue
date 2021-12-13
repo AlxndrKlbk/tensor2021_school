@@ -1,57 +1,56 @@
 <template>
-<div class="setting_game">
-  <div class="title_scenario">
+  <div class="setting_game">
+    <div class="title_scenario">
       Сценарий 1
-  </div>
-  <div class="cart_scenario">
+    </div>
+    <div class="cart_scenario">
       <div class="cart_scenario_cover">
-          <img src="../assets/oblojka.png" alt="">
+        <img src="../assets/oblojka.png" alt="">
       </div>
       <div class="game_panel">
         <div class="game_panel_control">
-            <NuxtLink to="/playGame" class="button_play"><div class="button_play">
-                Играть
-            </div></NuxtLink>
-            <div class="button_add_library">
-                Добавить в библиотеку
+          <NuxtLink to="/playGame" class="button_play">
+            <div class="button_play">
+              Играть
             </div>
+          </NuxtLink>
+          <div class="button_add_library">
+            Добавить в библиотеку
+          </div>
         </div>
         <div class="table_about_scenario">
-            <tbody>
-                <tr>
-                    <th>Автор сценария</th>
-                    <td>Иван Иванов</td>
-                </tr>
-                <tr>
-                    <th>Автор публикации</th>
-                    <td>Петр Петров</td>
-                </tr>
-                <tr>
-                    <th>Дата выхода</th>
-                    <td>21.21.21</td>
-                </tr>
-                
-            </tbody>
+          <tbody>
+            <tr>
+              <th>Автор сценария</th>
+              <td>Иван Иванов</td>
+            </tr>
+            <tr>
+              <th>Автор публикации</th>
+              <td>Петр Петров</td>
+            </tr>
+            <tr>
+              <th>Дата выхода</th>
+              <td>21.21.21</td>
+            </tr>
+          </tbody>
         </div>
       </div>
-  </div>
-  <div class="article_scenario">
+    </div>
+    <div class="article_scenario">
       <div class="article_scenario_title">
-          Описание
+        Описание
       </div>
       <div class="article_scenario_container">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt voluptatibus dolor nisi deserunt asperiores inventore quas, commodi ipsa aliquid tempore quisquam dicta officiis quo, laborum assumenda. Voluptates, reprehenderit. Fugit, debitis nisi assumenda quo a iusto, ad ipsum consequatur perferendis corrupti, numquam saepe optio dolores incidunt ea delectus quia ab ducimus quibusdam sint. Doloremque possimus vitae repellat ut. Doloribus iure saepe placeat necessitatibus adipisci. Quo, optio magnam? Unde qui culpa ipsa tempore perferendis consequuntur vero, aperiam iusto fuga ullam eaque earum a autem esse illo?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt voluptatibus dolor nisi deserunt asperiores inventore quas, commodi ipsa aliquid tempore quisquam dicta officiis quo, laborum assumenda. Voluptates, reprehenderit. Fugit, debitis nisi assumenda quo a iusto, ad ipsum consequatur perferendis corrupti, numquam saepe optio dolores incidunt ea delectus quia ab ducimus quibusdam sint. Doloremque possimus vitae repellat ut. Doloribus iure saepe placeat necessitatibus adipisci. Quo, optio magnam? Unde qui culpa ipsa tempore perferendis consequuntur vero, aperiam iusto fuga ullam eaque earum a autem esse illo?
       </div>
-  </div>
-  <div class="list_location_scenario">
+    </div>
+    <div class="list_location_scenario">
       <div class="list_location__title">
-          Локации
+        Локации
       </div>
-      <div class="list_location_container">
-
-      </div>
+      <div class="list_location_container" />
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -76,7 +75,6 @@ export default {
     display: flex;
     width: 500px;
 }
-
 
 .game_panel {
     margin-left: 5px;
