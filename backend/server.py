@@ -9,22 +9,40 @@ from asgiref.sync import sync_to_async
 routes = web.RouteTableDef()
 rus_json_dumps = partial(json.dumps, ensure_ascii=False)
 
+
 @routes.get('/scenarios_list')
 async def scenarios_list(request):
     scenario = Scenario()
     result = await scenario.get_scenario_list()
-
     return web.json_response({'result': result}, dumps=rus_json_dumps)
+
 
 @routes.get('/get_rooms')
 async def get_rooms(request):
-    request = json.loads(request)
     result = {}
     room = Room()
-    for room_id in request['rooms_id'].split():
+    data = list(map(int, request.headers['rooms_id'].split(sep=",")))
+    for room_id in data:
         result[room_id] = await room.find_entity('rooms_id', room_id)
-    result = json.dumps(result)
-    return result
+
+    return web.json_response({'result': result}, dumps=rus_json_dumps)
+
+
+@routes.get('/get_enemies')
+async def get_enemies(request):
+    result = {}
+    room = Enemies()
+    data = list(request.headers['enemies_names'].split(sep=","))
+    for enemie_name in data:
+        result[enemie_name] = await room.find_entity('name', enemie_name)
+    return web.json_response({'result': result}, dumps=rus_json_dumps)
+
+
+@routes.post('/save_scenario')
+async def save_scenario(request):
+    result = {}
+    # frontend/store/createScenario.js
+    return web.json_response({'result': result}, dumps=rus_json_dumps)
 
 
 if __name__ == '__main__':

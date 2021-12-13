@@ -76,7 +76,7 @@ class Postgres:
         return result
 
     @classmethod
-    def find_entity(self, column_name, val):
+    async def find_entity(self, column_name, val):
         table_name = self._TABLE
         sql_sentence = f"SELECT * from {table_name} WHERE {column_name} = '{val}'"
         return self.query(sql_sentence, None)
