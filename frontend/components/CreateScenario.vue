@@ -1,14 +1,16 @@
 <template>
   <div class="create_scenario">
-    <b-button @click="setnameScenariotoStore" class="button_save" type="is-success" outlined>
+    <b-button class="button_save" type="is-success" outlined @click="setnameScenariotoStore">
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_scenario">
-      <input v-model="nameScenario" class="input is-medium" type="text" placeholder="Введите название" />
+      <input v-model="nameScenario" class="input is-medium" type="text" placeholder="Введите название">
     </div>
     <div class="input_article_scenario">
-      <div class="input_article_scenario_title">ОПИСАНИЕ К СЦЕНАРИЮ</div>
-      <textarea v-model="articleScenario" class="textarea" placeholder="Введите описание сценария"></textarea>
+      <div class="input_article_scenario_title">
+        ОПИСАНИЕ К СЦЕНАРИЮ
+      </div>
+      <textarea v-model="articleScenario" class="textarea" placeholder="Введите описание сценария" />
     </div>
     <div class="location_container">
       <div class="location_container_title">
@@ -16,49 +18,53 @@
           ЛОКАЦИИ
         </div>
         <button class="add_location">
-          <NuxtLink to="/createLocation">+</NuxtLink>
+          <NuxtLink to="/createLocation">
+            +
+          </NuxtLink>
         </button>
       </div>
       <div class="location_card_catalogy">
-        <ListLocation :listLocation="listLocation" />
+        <CardLocation />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import store from '~/store/Index';
-import ListLocation from './ListLocation.vue';
-  export default {
+import { mapState, mapMutations } from 'vuex'
+import CardLocation from './CardLocation.vue'
+export default {
 
-    components: {
-    ListLocation
-},
-
-    beforeMount() {
-      
-    },
-
-    data() {
-      return {
-        nameScenario: '',
-        articleScenario: '',
-        listLocation: [],
-      }
-    },
-
-    methods: {
-      setnameScenariotoStore() {
-        this.$store.commit('increment', {
-          nameScenario: this.nameScenario
-        })
-      },
-
-      createLocation(location) {
-        console.log(location)
-      },
+  components: {
+    CardLocation
+  },
+  data () {
+    return {
+      nameScenario: '',
+      articleScenario: '',
+      listLocation: []
     }
-  };
+  },
+  beforeMount () {},
+  methods: {
+    ...mapMutations(['increment']),
+    setnameScenariotoStore () {
+      this.increment({
+        nameScenario: this.nameScenario,
+        articleScenario: this.articleScenario,
+        listLocation: this.listLocation
+      })
+    },
+    createLocation (location) {
+      this.listLocation.push(location)
+    }
+  },
+
+  computed: mapState({
+    nameScenario: state => state.nameScenario,
+  }) 
+
+}
 
 </script>
 

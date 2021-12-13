@@ -1,17 +1,15 @@
 <template>
   <div class="header">
-      <div class="title_scenario">
-          Сценарий № 1
-      </div>
-      <div class="list_location">
-      </div>
-        
+    <div class="title_scenario">
+      Сценарий № 1
+    </div>
+    <div class="list_location" />
   </div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -28,7 +26,5 @@ export default {
     align-items: center;
     z-index: 99;
 }
-
-
 
 </style>

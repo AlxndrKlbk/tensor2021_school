@@ -1,7 +1,6 @@
 <template>
   <div class="header_create">
-      
-      <!-- <div class="button_save">
+    <!-- <div class="button_save">
           <div class="logo_button_save">
           </div>
           <div class="text_add_scenario">
@@ -30,7 +29,6 @@ export default {
     align-items: center;
     z-index: 99;
 }
-
 
 .button_save {
     cursor: pointer;

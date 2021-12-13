@@ -1,24 +1,24 @@
 <template>
   <div class="library_scenario">
-      <CardScenario v-for="item in items" :key="item.id" :item="item"/>
+    <CardScenario v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script>
 export default {
 
-   props: {
-     itemsProp: {
-       type: Array,
-       default: () => []
-     }
-   },
-   data () {
-     return {
-       items: this.itemsProp
-     };
-   }
-};
+  props: {
+    itemsProp: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data () {
+    return {
+      items: this.itemsProp
+    }
+  }
+}
 </script>
 
 <style>

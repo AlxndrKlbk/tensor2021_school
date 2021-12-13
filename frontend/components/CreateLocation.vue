@@ -29,7 +29,7 @@
 
 <script>
 import CreateUnitDialog from "./CreateUnitDialog.vue";
-import store from "~/store/Index";
+import store from "~/store";
 export default {
   data() {
     return {
@@ -52,9 +52,9 @@ export default {
         unitItems: [],
       }
 
-      // this.$store.commit('addLocation', {
-      //   location: this.location
-      // })
+      this.$store.commit('addLocation', {
+        location: this.location
+      })
       this.$router.push('createScenario')
     },
 

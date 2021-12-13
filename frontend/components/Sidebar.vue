@@ -1,56 +1,56 @@
 <template>
   <div class="sidebar">
-      <div class="sidebar_item_user">
-          <div class="sidebar_item_user_icon">
-            <img height="50px" width="50px" src="../assets/logo_user.svg" alt="">
-          </div>
-          <div class="sidebar_item_user_name">
-              Username
-          </div>
+    <div class="sidebar_item_user">
+      <div class="sidebar_item_user_icon">
+        <img height="50px" width="50px" src="../assets/logo_user.svg" alt="">
       </div>
-      <div class="sideber_list">
-          <div class="sideber_list_item">
-              <div class="sideber_list_item_icon">
-                  <img src="../assets/home.svg" alt="">
-              </div>
-              <div class="sideber_list_item_title">
-                  Домой
-              </div>
-          </div>
-          <div class="sideber_list_item">
-              <div class="sideber_list_item_icon">
-                <img src="../assets/magazin.svg" alt="">
-              </div>
-              <div class="sideber_list_item_title">
-                  Магазин
-              </div>
-          </div>
-          <div class="sideber_list_item active">
-              <div class="sideber_list_item_icon">
-                <img src="../assets/labrary.svg" alt="">
-              </div>
-              <NuxtLink to="/libraryScenario">
-                <div class="sideber_list_item_title">
-                  Библиотека
-                </div>
-              </NuxtLink>
-          </div>
-          <div class="sideber_list_item_setting">
-              <div class="sideber_list_item_setting_icon">
-                  <img src="../assets/setting.png" alt="Setting">
-              </div>
-              <div class="sideber_list_item_setting_title">
-                  Настройки
-              </div>
-          </div>
+      <div class="sidebar_item_user_name">
+        Username
       </div>
+    </div>
+    <div class="sideber_list">
+      <div class="sideber_list_item">
+        <div class="sideber_list_item_icon">
+          <img src="../assets/home.svg" alt="">
+        </div>
+        <div class="sideber_list_item_title">
+          Домой
+        </div>
+      </div>
+      <div class="sideber_list_item">
+        <div class="sideber_list_item_icon">
+          <img src="../assets/magazin.svg" alt="">
+        </div>
+        <div class="sideber_list_item_title">
+          Магазин
+        </div>
+      </div>
+      <div class="sideber_list_item active">
+        <div class="sideber_list_item_icon">
+          <img src="../assets/labrary.svg" alt="">
+        </div>
+        <NuxtLink to="/libraryScenario">
+          <div class="sideber_list_item_title">
+            Библиотека
+          </div>
+        </NuxtLink>
+      </div>
+      <div class="sideber_list_item_setting">
+        <div class="sideber_list_item_setting_icon">
+          <img src="../assets/setting.png" alt="Setting">
+        </div>
+        <div class="sideber_list_item_setting_title">
+          Настройки
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    
-};
+
+}
 </script>
 
 <style>

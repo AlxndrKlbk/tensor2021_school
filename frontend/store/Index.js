@@ -3,28 +3,33 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-
-const store = () => Vuex.Store({
+const store = () => new Vuex.Store({
   state: {
     nameScenario: '',
     articleScenario: '',
-    listLocation: [],
+    listLocation: [
+      { nameLocation: 'Локация1' }
+    ]
   },
 
   getters: {
     getNameScenario: (state) => {
-      return state.nameScenario;
+      return state.nameScenario
     }
   },
 
   mutations: {
-    increment(state, objectData) {
+    increment (state, objectData) {
       state.nameScenario = objectData.nameScenario
     },
 
-    addLocation(state, objectData) {
-        state.listLocation.push(objectData.location)
+    addLocation (state, objectData) {
+      state.listLocation.push(objectData.location)
     }
+  },
+
+  modules: {
+
   }
 })
 

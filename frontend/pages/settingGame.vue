@@ -1,12 +1,12 @@
 <template>
-  <SettingGame/>
+  <SettingGame />
 </template>
 
 <script>
-import SettingGame from "~/components/SettingGame.vue";
+import SettingGame from '~/components/SettingGame.vue'
 export default {
-    layout: 'play',
-    components: { SettingGame }
+  components: { SettingGame },
+  layout: 'play'
 }
 </script>
 

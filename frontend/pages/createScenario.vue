@@ -6,7 +6,7 @@
 
 export default {
   layout: 'create'
-    
+
 }
 </script>
 
