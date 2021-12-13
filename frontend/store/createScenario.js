@@ -12,9 +12,9 @@ const createScenario = () => new Vuex.Store({
         nameLocation: 'Локация1',
         articleLocation: 'dsiofpsdofpsdifpisdpfisdpifpsdifpsidpfisdpfisdpifpsdif',
         unitItems: [
-          { unitDamage: 34, unitDifficult: 34, unitHealth: 324, unitName: 'asddfgdfgdfgfe4w' },
-          { unitDamage: 32, unitDifficult: 24, unitHealth: 3166, unitName: 'asdasddfgdfg' },
-          { unitDamage: 123, unitDifficult: 33, unitHealth: 32234, unitName: 'asdafdgdfgdfw' }
+          { unitDamage: 34, unitDifficult: 34, unitHealth: 324, unitName: '1', amountUnit: 5 },
+          { unitDamage: 32, unitDifficult: 24, unitHealth: 3166, unitName: '2', amountUnit: 2 },
+          { unitDamage: 123, unitDifficult: 33, unitHealth: 32234, unitName: '3', amountUnit: 1 }
         ]
       }
     ]

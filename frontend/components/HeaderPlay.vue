@@ -3,17 +3,18 @@
     <div class="title_scenario">
       Сценарий № 1
     </div>
-    <div class="list_location" />
+    <GameListLocation/>
   </div>
 </template>
 
 <script>
+import GameListLocation from "./GameListLocation.vue";
 export default {
-
+    components: { GameListLocation }
 }
 </script>
 
-<style>
+<style scoped>
 .header {
     position: fixed;
     width: calc(100% - 300px);
@@ -25,6 +26,9 @@ export default {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    padding-right: 50px;
 }
-
+.title_scenario {
+  font-size: 30px;
+}
 </style>

@@ -2,7 +2,7 @@
   <div class="location_card_item">
     <div class="location_card_cover" />
     <div class="location_card_title">
-      {{ $store.state.listLocation.nameLocation }}
+      <!-- {{ $store.state.listLocation.nameLocation }} -->
     </div>
     <div class="remake_location">
       <div class="remake_location_icon">
