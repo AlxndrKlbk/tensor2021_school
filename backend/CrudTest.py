@@ -26,3 +26,17 @@ for i in range(10):
                              "ON CONFLICT DO NOTHING RETURNING scenarios_id",
                              (f"text{i}", basic_scenario, "1,2,3"))
     print(result)
+
+
+for i in range(3):
+    basic_room = {"goblin": 2, "ogre": 1, "skeleton": 3}
+    basic_room = json.dumps(basic_room)
+    result = postgress.query("INSERT INTO gameslocations (description, enemies) VALUES (%s,%s) "
+                             "ON CONFLICT DO NOTHING RETURNING rooms_id",
+                             ("some amazing description", basic_room))
+
+
+for name in ['ogre', 'goblin', 'sceleton']:
+    result = postgress.query("INSERT INTO enemies (name, health, defence, damage) VALUES (%s,%s,%s,%s) "
+                             "ON CONFLICT DO NOTHING RETURNING enemie_id",
+                             (name, 5, 2, 2))

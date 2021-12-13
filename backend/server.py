@@ -16,12 +16,19 @@ async def scenarios_list(request):
 
     return web.json_response({'result': result}, dumps=rus_json_dumps)
 
+@routes.get('/get_rooms')
+async def get_rooms(request):
+    request = json.loads(request)
+    result = {}
+    room = Room()
+    for room_id in request['rooms_id'].split():
+        result[room_id] = await room.find_entity('rooms_id', room_id)
+    result = json.dumps(result)
+    return result
+
 
 if __name__ == '__main__':
     app = web.Application()
-
-    # routes.static('/script', 'static/script')
-    # routes.static('/css', 'static/css')
     app.add_routes(routes)
 
     cors = aiohttp_cors.setup(app, defaults={
