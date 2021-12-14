@@ -2,7 +2,7 @@
   <div  class="location_card_item">
     <div class="location_card_cover" />
     <div class="location_card_title">
-      <!-- {{ Location.nameLocation }} -->
+      {{ scenario.listlocation.nameLocation  }}
     </div>
     <div class="remake_location">
       <div class="remake_location_icon">
@@ -18,7 +18,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 export default {
-  props: ['location'],
+  props: ['scenario.listLocation'],
 
   methods: {
     onEditLocation (_event, location) {

@@ -24,7 +24,7 @@
         </button>
       </div>
       <div class="location_card_catalogy">
-        <CardLocation />
+        <CardLocation :locationProp= "scenario.listLocation" v-for="listLocation in listLocations" />
       </div>
     </div>
   </div>
@@ -40,6 +40,7 @@ export default {
     CardLocation
   },
   props: ['scenarioProp'],
+  
   data () {
     return {
       nameScenario: this.scenarioProp.nameScenario,

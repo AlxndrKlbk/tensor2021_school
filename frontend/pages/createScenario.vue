@@ -1,5 +1,5 @@
 <template>
-  <CreateScenario :scenarioProp="scenario"/>
+  <CreateScenario :scenarioProp="scenario"  />
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
     const scenario = {
       nameScenario: params.nameScenario,
       articleScenario: params.articleScenario,
-      listLocation: []
+      listLocation: store.getters['createScenario/getListLocation']
     }
     return {
       scenario
