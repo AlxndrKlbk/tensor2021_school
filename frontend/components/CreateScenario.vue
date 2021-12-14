@@ -1,6 +1,6 @@
 <template>
   <div class="create_scenario">
-    <b-button class="button_save" type="is-success" outlined @click="setnameScenario">
+    <b-button class="button_save" type="is-success" outlined @click="setDataScenario">
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_scenario">
@@ -21,13 +21,10 @@
           <b-button @click="onAddLocationClick">
             +
           </b-button>
-          <!-- <NuxtLink to="/createLocation">
-            +
-          </NuxtLink> -->
         </button>
       </div>
       <div class="location_card_catalogy">
-        <CardLocation :location="location" />
+        <CardLocation />
       </div>
     </div>
   </div>
@@ -38,6 +35,10 @@ import { mapState, mapMutations } from 'vuex'
 import CardLocation from './CardLocation.vue'
 import createScenario from '~/pages/createScenario.vue'
 export default {
+
+  components: {
+    CardLocation
+  },
   props: ['scenarioProp'],
   data () {
     return {
@@ -46,30 +47,24 @@ export default {
       listLocation: this.scenarioProp.listLocation
     }
   },
-  computed: mapState(['listLocation']),
-
-  components: {
-    CardLocation
-  },
 
   beforeMount () {},
   methods: {
 
-    setnameScenario () {
-      this.$store.commit('createScenario/setnameScenario', this.nameScenario)
-      // articleScenario: this.articleScenario,
-      // listLocation: this.listLocation
+    setDataScenario () {
+      this.$store.commit('createScenario/setDataScenario', { nameScenario: this.nameScenario, articleScenario: this.articleScenario })
+      this.$router.push('/libraryScenario')
     },
 
     onAddLocationClick () {
       this.$router.push('/createLocation')
     }
+
+    // createLocation (locationObject) {
+    //   this.listLocation.push(locationObject)
+    // }
+
   }
-
-  // ...mapMutations({
-  //   setnameScenario: 'createScenario/setnameScenario'
-  // })
-
 }
 </script>
 

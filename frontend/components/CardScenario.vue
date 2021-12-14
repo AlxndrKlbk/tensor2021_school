@@ -4,7 +4,7 @@
       <!-- <img :src="`https://frontend-test.idaproject.com${$props.item.photo}`" :alt="$props.item.name"> -->
     </div>
     <div class="card_scenario_title">
-      <!-- {{ $props.item.name }} -->
+      {{ scenarioProp.nameScenario }}
     </div>
     <div class="card_scenario_control_panel">
       <div class="play_scenario">
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  props: ['scenario'],
+  props: ['scenarioProp'],
 
   methods: {
     onEditScenario (_event, scenario) {

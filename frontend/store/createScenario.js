@@ -1,6 +1,6 @@
 
 export const state = () => ({
-  nameScenario: 'adsasdasd',
+  nameScenario: '',
   articleScenario: '',
   listLocation: [
     {
@@ -24,16 +24,14 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setnameScenario (state, nameScenario) {
-    state.titleScenario = nameScenario
-  },
-  setarticleScenario (state, articleScenario) {
+  setDataScenario (state, { nameScenario, articleScenario }) {
+    state.nameScenario = nameScenario,
     state.articleScenario = articleScenario
-  },
+  }
 
-  addLocation(state, location) {
-    state.listLocation.push(location)
-  },
+  // addLocation(state, location) {
+  //   state.listLocation.push(location)
+  // },
 
 
 }

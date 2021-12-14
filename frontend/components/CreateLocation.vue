@@ -1,6 +1,6 @@
 <template>
   <div class="create_location">
-    <b-button class="button_save" type="is-success" outlined @click="createLocation">
+    <b-button class="button_save" type="is-success" outlined @click="onCreateLocation">
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_location">
@@ -41,13 +41,12 @@ export default {
   },
 
   methods: {
-    createLocation () {
-      this.$emit('createLocation', this.location)
-      this.location = {
-        nameLocation: '',
-        articleLocation: '',
-        unitItems: []
-      }
+    onCreateLocation () {
+      this.$emit('createLocation', {
+        nameLocation: this.nameLocation,
+        articleLocation: this.articleLocation,
+        unitItems: this.unitItems
+      })
       this.$router.push('createScenario')
     },
 
@@ -63,7 +62,7 @@ export default {
       })
     },
     saveUnit (unitObject) {
-      this.location.unitItems.push(unitObject)
+      this.unitItems.push(unitObject)
 
       // this.$axios.$post(`...`, {
       //     headers: {
