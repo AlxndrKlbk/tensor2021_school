@@ -41,7 +41,36 @@ async def get_enemies(request):
 @routes.post('/save_scenario')
 async def save_scenario(request):
     result = {}
-    # frontend/store/createScenario.js
+    enemies = {}
+    rooms_id = []
+    data = await request.json()
+    for item in data['unitItems']:
+        enemie = Enemies()
+        enemie._FIELDS_MAPPING.update(item)
+        enemies[item['name']] = await enemie._create_record()
+    print('enemies added')
+
+    for item in data['listLocation']:
+        room = Room()
+        room._FIELDS_MAPPING.update(item)
+        id = await room._create_record()
+        rooms_id.append(id)
+    print('rooms added', rooms_id)
+
+    rooms_id = ','.join(map(str,  rooms_id))
+    scenario = Scenario()
+    scenario._FIELDS_MAPPING.update({'name': data['name'],
+                                     'description': data['description'],
+                                     'structure': {},
+                                     'rooms_id': rooms_id})
+    result = await scenario._create_record()
+    print('scenario added')
+
+    if result != None:
+        result = 'success'
+    else:
+        result = 'sadly'
+
     return web.json_response({'result': result}, dumps=rus_json_dumps)
 
 

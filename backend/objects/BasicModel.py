@@ -26,14 +26,21 @@ class Postgres:
         return result
 
     @classmethod
-    def _create_record(self, pk):
-        values_from_mapping = " "
-        for keys, val in self.__dict__.items():
-            if keys in self._FIELDS_MAPPING.keys():
-                values_from_mapping += str(val) + ","
-        sql_sentence = f"INSERT INTO {self._TABLE}  VALUES ({values_from_mapping[0:-1]});"
-        print(sql_sentence)
-        self.query(sql_sentence, values_from_mapping)
+    async def _create_record(self):
+        values_from_mapping = ""
+        keys_from_mapping = ""
+        for keys, val in self._FIELDS_MAPPING.items():
+            keys_from_mapping += str(keys) + ','
+            values_from_mapping += str(val) + ','
+        values_from_mapping = values_from_mapping[0:-1]
+        values_from_mapping = tuple(map(lambda x: int(x) if x.isdigit() else x, values_from_mapping.split(sep=',')))
+        values = '%s,'*len(self._FIELDS_MAPPING.keys())
+
+        sql_sentence = f"INSERT INTO {self._TABLE} ({keys_from_mapping[0:-1]}) " \
+                       f"VALUES({values[0:-1]}) RETURNING enemie_id"
+
+        result = self.query(sql_sentence, values_from_mapping)
+        return result[0][0]
 
     @classmethod
     def _update_record(self, pk, data):

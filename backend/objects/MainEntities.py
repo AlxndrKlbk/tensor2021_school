@@ -1,9 +1,10 @@
 from backend.objects.BasicModel import Postgres
+import json
 
 
 class User(Postgres):
     _TABLE = "Users"
-    _FIELDS_MAPPING = None
+    _FIELDS_MAPPING = {}
 
     def __init__(self, nick_name):
         self._nickname = nick_name
@@ -29,7 +30,7 @@ class User(Postgres):
 
 class Scenario(Postgres):
     _TABLE = "Scenarios"
-    _FIELDS_MAPPING = None
+    _FIELDS_MAPPING = {}
 
     def __init__(self):
         self._name = None
@@ -50,32 +51,57 @@ class Scenario(Postgres):
         return self.query(sql_sentence)
 
     @classmethod
-    def update_scenatio(self, updates):
-        """
-        This function set users setting for his active scenario
+    async def _create_record(self):
+        values_from_mapping = []
+        keys_from_mapping = ""
+        for key, val in self._FIELDS_MAPPING.items():
+            keys_from_mapping += str(key) + ','
+            if key == 'structure':
+                values_from_mapping.append(json.dumps(val))
+            else:
+                values_from_mapping.append(val)
 
-        :param updates: json with users settings
-        :return: Nothing
-        """
-        pass
+        values = '%s,'*len(self._FIELDS_MAPPING.keys())
+        sql_sentence = f"INSERT INTO {self._TABLE} ({keys_from_mapping[0:-1]}) " \
+                       f"VALUES({values[0:-1]}) RETURNING rooms_id"
+
+        result = self.query(sql_sentence, values_from_mapping)
+        return result[0][0]
 
 
 class Room(Postgres):
     _TABLE = "GamesLocations"
-    _FIELDS_MAPPING = None
+    _FIELDS_MAPPING = {}
 
     def __init__(self):
         self._description = None
         self._enemies = None
         self._special_requirements = None
 
-    def __fit_setting(self, config):
-        pass
+
+    #это костыль
+    @classmethod
+    async def _create_record(self):
+        values_from_mapping = []
+        keys_from_mapping = ""
+        for key, val in self._FIELDS_MAPPING.items():
+            keys_from_mapping += str(key) + ','
+            if key == 'enemies':
+                values_from_mapping.append(json.dumps(val))
+            else:
+                values_from_mapping.append(val)
+
+        values = '%s,'*len(self._FIELDS_MAPPING.keys())
+        sql_sentence = f"INSERT INTO {self._TABLE} ({keys_from_mapping[0:-1]}) " \
+                       f"VALUES({values[0:-1]}) RETURNING rooms_id"
+
+        result = self.query(sql_sentence, values_from_mapping)
+        return result[0][0]
 
 
 class Enemies(Postgres):
     _TABLE = "Enemies"
-    _FIELDS_MAPPING = None
+    _FIELDS_MAPPING = {}
 
     def __init__(self):
         self._name = None

@@ -36,7 +36,7 @@ for i in range(3):
                              ("some amazing description", basic_room))
 
 
-for name in ['ogre', 'goblin', 'sceleton']:
+for name in ['ogre', 'goblin', 'skeleton']:
     result = postgress.query("INSERT INTO enemies (name, health, defence, damage) VALUES (%s,%s,%s,%s) "
                              "ON CONFLICT DO NOTHING RETURNING enemie_id",
                              (name, 5, 2, 2))

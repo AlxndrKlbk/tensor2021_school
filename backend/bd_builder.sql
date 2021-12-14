@@ -17,6 +17,7 @@ CREATE TABLE Scenarios(
 
 CREATE TABLE GamesLocations(
     rooms_id SERIAL PRIMARY KEY,
+    name VARCHAR(20) not NULL,
     description VARCHAR(100) NOT NULL,
     enemies jsonb not NULL
 );
