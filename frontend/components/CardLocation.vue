@@ -25,8 +25,8 @@ export default {
       this.$router.push({
         name: 'createLocation',
         params: {
-          nameLocation: /* location.nameLocation */'Драсте 1',
-          articleLocation: 'Драсте дратсе',
+          nameLocation: this.locations.nameLocation,
+          articleLocation: this.locations.articleLocation,
           unitItems: []
         }
       }).catch(() => {})
