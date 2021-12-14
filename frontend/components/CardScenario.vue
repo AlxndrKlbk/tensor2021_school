@@ -1,10 +1,10 @@
 <template>
   <div class="card_scenario">
     <div class="card_scenario_cover">
-      <img :src="`https://frontend-test.idaproject.com${$props.item.photo}`" :alt="$props.item.name">
+      <!-- <img :src="`https://frontend-test.idaproject.com${$props.item.photo}`" :alt="$props.item.name"> -->
     </div>
     <div class="card_scenario_title">
-      {{ $props.item.name }}
+      <!-- {{ $props.item.name }} -->
     </div>
     <div class="card_scenario_control_panel">
       <div class="play_scenario">
@@ -21,7 +21,7 @@
         <div class="remake_scenario_icon">
           <img src="../assets/remake.svg" alt="">
         </div>
-        <div class="remake_scenario_title">
+        <div class="remake_scenario_title" @click="onEditScenario">
           Редактировать
         </div>
       </div>
@@ -31,7 +31,20 @@
 
 <script>
 export default {
-  props: ['item']
+  props: ['scenario'],
+
+  methods: {
+    onEditScenario (_event, scenario) {
+      this.$router.push({
+        name: 'createScenario',
+        params: {
+          nameScenario: 'Ебучий сценарий',
+          articleScenario: 'Ебучее описание сценария',
+          listLocation: []
+        }
+      }).catch(() => {})
+    }
+  }
 
 }
 

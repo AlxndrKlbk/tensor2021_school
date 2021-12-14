@@ -1,6 +1,6 @@
 <template>
   <div class="create_scenario">
-    <b-button class="button_save" type="is-success" outlined @click="setnameScenariotoStore">
+    <b-button class="button_save" type="is-success" outlined @click="setnameScenario">
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_scenario">
@@ -18,13 +18,16 @@
           ЛОКАЦИИ
         </div>
         <button class="add_location">
-          <NuxtLink to="/createLocation">
+          <b-button @click="onAddLocationClick">
             +
-          </NuxtLink>
+          </b-button>
+          <!-- <NuxtLink to="/createLocation">
+            +
+          </NuxtLink> -->
         </button>
       </div>
       <div class="location_card_catalogy">
-        <CardLocation />
+        <CardLocation :location="location" />
       </div>
     </div>
   </div>
@@ -33,42 +36,44 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import CardLocation from './CardLocation.vue'
+import createScenario from '~/pages/createScenario.vue'
 export default {
+  props: ['scenarioProp'],
+  data () {
+    return {
+      nameScenario: this.scenarioProp.nameScenario,
+      articleScenario: this.scenarioProp.articleScenario,
+      listLocation: this.scenarioProp.listLocation
+    }
+  },
+  computed: mapState(['listLocation']),
 
   components: {
     CardLocation
   },
-  data () {
-    return {
-      nameScenario: '',
-      articleScenario: '',
-      listLocation: []
-    }
-  },
+
   beforeMount () {},
   methods: {
-    ...mapMutations(['increment']),
-    setnameScenariotoStore () {
-      this.increment({
-        nameScenario: this.nameScenario,
-        articleScenario: this.articleScenario,
-        listLocation: this.listLocation
-      })
-    },
-    createLocation (location) {
-      this.listLocation.push(location)
-    }
-  },
 
-  computed: mapState({
-    nameScenario: state => state.nameScenario,
-  }) 
+    setnameScenario () {
+      this.$store.commit('createScenario/setnameScenario', this.nameScenario)
+      // articleScenario: this.articleScenario,
+      // listLocation: this.listLocation
+    },
+
+    onAddLocationClick () {
+      this.$router.push('/createLocation')
+    }
+  }
+
+  // ...mapMutations({
+  //   setnameScenario: 'createScenario/setnameScenario'
+  // })
 
 }
-
 </script>
 
-<style>
+<style scoped>
   .create_scenario {
     padding-left: 300px;
     padding-top: 110px;

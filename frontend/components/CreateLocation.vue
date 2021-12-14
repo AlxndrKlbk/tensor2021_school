@@ -1,85 +1,78 @@
 <template>
   <div class="create_location">
-    <b-button @click="createLocation" class="button_save" type="is-success" outlined>
+    <b-button class="button_save" type="is-success" outlined @click="createLocation">
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_location">
-      <input v-model="location.nameLocation" class="input is-medium" type="text" placeholder="Введите название локации">
+      <input v-model="nameLocation" class="input is-medium" type="text" placeholder="Введите название локации">
     </div>
     <div class="input_article_location">
       <div class="input_article_location_title">
         ОПИСАНИЕ К ЛОКАЦИИ
       </div>
-      <textarea v-model="location.articleLocation" class="textarea" placeholder="Введите описание локации">
-        </textarea>
+      <textarea v-model="articleLocation" class="textarea" placeholder="Введите описание локации" />
     </div>
     <div class="unit_container">
       <div class="added_unit">
         <div class="added_unit_title">
           ВРАЖЕСКИЕ ЮНИТЫ
         </div>
-        <button @click="onButtonNewRowClicked" class="added_unit_button">
+        <button class="added_unit_button" @click="onButtonNewRowClicked">
           +
         </button>
       </div>
-      <UnitTable :unitItems="location.unitItems" />
+      <UnitTable :unit-items="unitItems" />
     </div>
   </div>
 </template>
 
 <script>
-import CreateUnitDialog from "./CreateUnitDialog.vue";
-import store from "~/store";
+import { mapMutations } from 'vuex'
+import CreateUnitDialog from './CreateUnitDialog.vue'
+import store from '~/store'
 export default {
-  data() {
+  props: ['locationProp'],
+  data () {
     return {
-      location: {
-        nameLocation: '',
-        articleLocation: '',
-        unitItems: [],
-      },
-      
+      nameLocation: this.locationProp.nameLocation,
+      articleLocation: this.locationProp.nameLocation,
+      unitItems: this.locationProp.unitItems
     }
   },
 
   methods: {
-    createLocation() {
-      this.location.id= Date.now();
-      this.$emit('createLocation', this.location);
+    createLocation () {
+      this.$emit('createLocation', this.location)
       this.location = {
         nameLocation: '',
         articleLocation: '',
-        unitItems: [],
+        unitItems: []
       }
-
-      this.$store.commit('addLocation', {
-        location: this.location
-      })
       this.$router.push('createScenario')
     },
 
-    onButtonNewRowClicked() {
+    onButtonNewRowClicked () {
       this.$buefy.modal.open({
         parent: this,
         component: CreateUnitDialog,
         events: {
           saveUnit: (unitObject) => {
-            this.saveUnit(unitObject);
+            this.saveUnit(unitObject)
           }
         }
       })
     },
-    saveUnit(unitObject) {
-      this.location.unitItems.push(unitObject);
+    saveUnit (unitObject) {
+      this.location.unitItems.push(unitObject)
 
-      // this.$axios.$post(`...`, { 
+      // this.$axios.$post(`...`, {
       //     headers: {
 
-      //     }, 
+      //     },
       //     unitObject
       // });
     }
-  }
+  },
 }
 
 </script>
