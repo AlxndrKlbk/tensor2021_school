@@ -41,15 +41,22 @@ export default {
   },
 
   methods: {
+    // onCreateLocation () {
+    //   this.$emit('createLocation', {
+    //     nameLocation: this.nameLocation,
+    //     articleLocation: this.articleLocation,
+    //     unitItems: this.unitItems
+    //   })
+    //   this.$router.push('createScenario')
+    // },
     onCreateLocation () {
-      this.$emit('createLocation', {
-        nameLocation: this.nameLocation,
+      this.$store.commit('createScenario/setLocation', {
+        nameScenario: this.nameLocation,
         articleLocation: this.articleLocation,
         unitItems: this.unitItems
       })
       this.$router.push('createScenario')
     },
-
     onButtonNewRowClicked () {
       this.$buefy.modal.open({
         parent: this,
