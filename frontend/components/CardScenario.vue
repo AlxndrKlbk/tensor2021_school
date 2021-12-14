@@ -1,10 +1,10 @@
 <template>
   <div class="card_scenario">
     <div class="card_scenario_cover">
-      <img :src="`https://frontend-test.idaproject.com${this.$props.item.photo}`" :alt="this.$props.item.name" />
+      <!-- <img :src="`https://frontend-test.idaproject.com${$props.item.photo}`" :alt="$props.item.name"> -->
     </div>
     <div class="card_scenario_title">
-      {{this.$props.item.name}}
+      {{ scenarioProp.nameScenario }}
     </div>
     <div class="card_scenario_control_panel">
       <div class="play_scenario">
@@ -12,14 +12,16 @@
           <img src="../assets/play.svg" alt="">
         </div>
         <div class="play_scenario_title">
-          <NuxtLink to="/settingGame" class="play_scenario_title">Запустить</NuxtLink>
+          <NuxtLink to="/settingGame" class="play_scenario_title">
+            Запустить
+          </NuxtLink>
         </div>
       </div>
       <div class="remake_scenario">
         <div class="remake_scenario_icon">
           <img src="../assets/remake.svg" alt="">
         </div>
-        <div class="remake_scenario_title">
+        <div class="remake_scenario_title" @click="onEditScenario">
           Редактировать
         </div>
       </div>
@@ -29,9 +31,22 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ['scenarioProp'],
 
-};
+  methods: {
+    onEditScenario (_event, scenario) {
+      this.$router.push({
+        name: 'createScenario',
+        params: {
+          nameScenario: 'Ебучий сценарий',
+          articleScenario: 'Ебучее описание сценария',
+          listLocation: []
+        }
+      }).catch(() => {})
+    }
+  }
+
+}
 
 </script>
 
@@ -43,7 +58,7 @@ export default {
  }
 
  .card_scenario_cover {
-   height: 255px;
+   height: 250px;
    background: lawngreen;
  }
 
@@ -53,7 +68,6 @@ export default {
    margin-left: 5px;
    color: white;
  }
-
 
  .card_scenario_control_panel {
    margin-left: 5px;

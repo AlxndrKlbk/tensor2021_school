@@ -1,14 +1,14 @@
 <template>
-  <div class="location_card_item">
+  <div  class="location_card_item">
     <div class="location_card_cover" />
     <div class="location_card_title">
-      {{ $store.state.listLocation.nameLocation }}
+      {{ locations.nameLocation }}
     </div>
     <div class="remake_location">
       <div class="remake_location_icon">
         <img src="../assets/remake.svg" alt="">
       </div>
-      <div class="remake_location_title">
+      <div class="remake_location_title" @click="onEditLocation">
         Редактировать
       </div>
     </div>
@@ -16,12 +16,27 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
+  props: ['locations'],
 
+  methods: {
+    onEditLocation (_event, location) {
+      this.$router.push({
+        name: 'createLocation',
+        params: {
+          nameLocation: this.locations.nameLocation,
+          articleLocation: this.locations.articleLocation,
+          unitItems: []
+        }
+      }).catch(() => {})
+    },
+  }
 }
+
 </script>
 
-<style>
+<style scoped>
 .location_card_item {
 
 }

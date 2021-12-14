@@ -1,22 +1,24 @@
 <template>
-  <LibraryScenario :items-prop="items" />
+  <LibraryScenario :scenarioProp="scenario" />
 </template>
 
 <script>
 import LibraryScenario from '~/components/LibraryScenario.vue'
+
 export default {
   components: { LibraryScenario },
 
-  async asyncData ({ $axios }) {
-    const result = await $axios.get('https://frontend-test.idaproject.com/api/product')
-
+  asyncData ({ store }) {
+    const scenario = {
+      nameScenario: store.getters['createScenario/getNameScenario']
+    }
     return {
-      items: result.data
+      scenario
     }
   },
   data () {
     return {
-      items: []
+      scenario: null
     }
   }
 }

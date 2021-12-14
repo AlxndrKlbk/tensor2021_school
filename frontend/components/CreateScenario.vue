@@ -1,6 +1,6 @@
 <template>
   <div class="create_scenario">
-    <b-button class="button_save" type="is-success" outlined @click="setnameScenariotoStore">
+    <b-button class="button_save" type="is-success" outlined @click="setDataScenario">
       СОХРАНИТЬ
     </b-button>
     <div class="input_name_scenario">
@@ -17,14 +17,12 @@
         <div class="title">
           ЛОКАЦИИ
         </div>
-        <button class="add_location">
-          <NuxtLink to="/createLocation">
+        <b-button class="add_location" @click="onAddLocationClick">
             +
-          </NuxtLink>
-        </button>
+        </b-button>
       </div>
       <div class="location_card_catalogy">
-        <CardLocation />
+        <CardLocation v-for="locations in locationProp" :locations="locations" />
       </div>
     </div>
   </div>
@@ -33,42 +31,47 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import CardLocation from './CardLocation.vue'
+import createScenario from '~/pages/createScenario.vue'
 export default {
 
   components: {
     CardLocation
   },
+  props: {
+    scenarioProp: {
+      type: Object
+    }
+  },
+  
   data () {
     return {
-      nameScenario: '',
-      articleScenario: '',
-      listLocation: []
+      nameScenario: this.scenarioProp.nameScenario,
+      articleScenario: this.scenarioProp.articleScenario,
+      locationProp: this.scenarioProp.listLocation
     }
   },
+
   beforeMount () {},
   methods: {
-    ...mapMutations(['increment']),
-    setnameScenariotoStore () {
-      this.increment({
-        nameScenario: this.nameScenario,
-        articleScenario: this.articleScenario,
-        listLocation: this.listLocation
-      })
+
+    setDataScenario () {
+      this.$store.commit('createScenario/setDataScenario', { nameScenario: this.nameScenario, articleScenario: this.articleScenario })
+      this.$router.push('/libraryScenario')
     },
-    createLocation (location) {
-      this.listLocation.push(location)
+
+    onAddLocationClick () {
+      this.$router.push('/createLocation')
     }
-  },
 
-  computed: mapState({
-    nameScenario: state => state.nameScenario,
-  }) 
+    // createLocation (locationObject) {
+    //   this.listLocation.push(locationObject)
+    // }
 
+  }
 }
-
 </script>
 
-<style>
+<style scoped>
   .create_scenario {
     padding-left: 300px;
     padding-top: 110px;
@@ -102,7 +105,7 @@ export default {
     width: 25px;
     height: 25px;
     margin-top: 7px;
-    border-radius: 15px;
+    border-radius: 25px;
     background-color: #121212;
     cursor: pointer;
   }
