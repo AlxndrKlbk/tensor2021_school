@@ -17,14 +17,12 @@
         <div class="title">
           ЛОКАЦИИ
         </div>
-        <button class="add_location">
-          <b-button @click="onAddLocationClick">
+        <b-button class="add_location" @click="onAddLocationClick">
             +
-          </b-button>
-        </button>
+        </b-button>
       </div>
       <div class="location_card_catalogy">
-        <CardLocation :locationProp= "scenario.listLocation" v-for="listLocation in listLocations" />
+        <CardLocation v-for="locations in locationProp" :locations="locations" />
       </div>
     </div>
   </div>
@@ -39,13 +37,17 @@ export default {
   components: {
     CardLocation
   },
-  props: ['scenarioProp'],
+  props: {
+    scenarioProp: {
+      type: Object
+    }
+  },
   
   data () {
     return {
       nameScenario: this.scenarioProp.nameScenario,
       articleScenario: this.scenarioProp.articleScenario,
-      listLocation: this.scenarioProp.listLocation
+      locationProp: this.scenarioProp.listLocation
     }
   },
 
@@ -103,7 +105,7 @@ export default {
     width: 25px;
     height: 25px;
     margin-top: 7px;
-    border-radius: 15px;
+    border-radius: 25px;
     background-color: #121212;
     cursor: pointer;
   }

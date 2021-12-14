@@ -51,7 +51,7 @@ export default {
     // },
     onCreateLocation () {
       this.$store.commit('createScenario/setLocation', {
-        nameScenario: this.nameLocation,
+        nameLocation: this.nameLocation,
         articleLocation: this.articleLocation,
         unitItems: this.unitItems
       })
@@ -114,11 +114,14 @@ export default {
 
 .added_unit {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .added_unit_button {
   cursor: pointer;
   border-radius: 15px;
+  background: none;
+  color: white;
 }
 
 .button_save {
