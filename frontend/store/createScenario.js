@@ -26,8 +26,10 @@ export const getters = {
   getNameScenario: (state) => {
     return state.nameScenario
   },
-  
   getListLocation: (state) => {
     return state.listLocation
+  },
+  getScenario: (state) => {
+    return state
   }
 }

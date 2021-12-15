@@ -1,7 +1,7 @@
 <template>
   <div class="setting_game">
     <div class="title_scenario">
-      Сценарий 1
+      {{ scenarioProp.nameScenario }}
     </div>
     <div class="cart_scenario">
       <div class="cart_scenario_cover">
@@ -41,20 +41,35 @@
         Описание
       </div>
       <div class="article_scenario_container">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt voluptatibus dolor nisi deserunt asperiores inventore quas, commodi ipsa aliquid tempore quisquam dicta officiis quo, laborum assumenda. Voluptates, reprehenderit. Fugit, debitis nisi assumenda quo a iusto, ad ipsum consequatur perferendis corrupti, numquam saepe optio dolores incidunt ea delectus quia ab ducimus quibusdam sint. Doloremque possimus vitae repellat ut. Doloribus iure saepe placeat necessitatibus adipisci. Quo, optio magnam? Unde qui culpa ipsa tempore perferendis consequuntur vero, aperiam iusto fuga ullam eaque earum a autem esse illo?
+        {{ scenarioProp.articleScenario }}
       </div>
     </div>
     <div class="list_location_scenario">
       <div class="list_location__title">
         Локации
       </div>
-      <div class="list_location_container" />
+      <div class="list_location_container" >
+        <CardLocation v-for="locations in locationProp" :locations="locations" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import CardLocation from './CardLocation.vue'
 export default {
+  components: { CardLocation },
+  props: {
+    scenarioProp: {
+      type: Object
+    }
+  },
+
+  data () {
+    return {
+      locationProp: this.scenarioProp.listLocation
+    }
+  }
 }
 </script>
 
@@ -126,6 +141,7 @@ export default {
 }
 
 .article_scenario_container {
+    width: 900px;
     margin-right: 30px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -145,6 +161,7 @@ export default {
 
 .list_location_container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 25px;
 }

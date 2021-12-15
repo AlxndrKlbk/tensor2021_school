@@ -1,55 +1,69 @@
 <template>
-  <div class="game_panel_unit_window">
-    <div class="game_panel_unit_title">
-      Панель управления юнитами
-    </div>
-    <div class="game_panel_unit">
-      <div class="panel_enemy_unit">
-        Вражеские юниты
-        <GamePanelEnemyUnit />
-        <GamePanelEnemyUnit />
-        <GamePanelEnemyUnit />
+  <section class="game_panel_unit">
+    <b-button class="button_show_panel" @click="open = true">
+      ≡
+    </b-button>
+    <b-sidebar
+      v-model="open"
+      type="is-light"
+      :fullheight="fullheight"
+      :right="right"
+      class="game_panel"
+    >
+      <div class="p-1">
+        <h1>Панель управления юнитами</h1>
+        <b-menu class="panel_menu">
+          <b-menu-list label="Вражеские юниты">
+            <GamePanelEnemyUnit/>
+          </b-menu-list>
+          <b-menu-list label="Игровые юниты">
+            <GamePanelAlliesUnit/>
+          </b-menu-list>
+        </b-menu>
       </div>
-      <div class="panel_game_unit">
-        Игровыеыва юниты
-        <GamePanelGameUnit />
-        <GamePanelGameUnit />
-        <GamePanelGameUnit />
-      </div>
-    </div>
-  </div>
+    </b-sidebar>
+  </section>
 </template>
 
 <script>
 import GamePanelEnemyUnit from './GamePanelEnemyUnit.vue'
+import GamePanelAlliesUnit from './GamePanelAlliesUnit.vue'
 export default {
-  components: { GamePanelEnemyUnit }
+  components: { GamePanelEnemyUnit, GamePanelAlliesUnit },
+
+  data () {
+    return {
+      open: false,
+      overlay: true,
+      fullheight: true,
+      right: true
+    }
+  }
 }
 </script>
 
 <style>
-.game_panel_unit_window {
-    width: 600px;
-    height: 800px;
-    background: rgb(192, 192, 192);
+
+.button_show_panel {
+  width: 15px;
+  background-color: rgb(61, 48, 19);
+  border: none;
+  z-index: 87;
+  color: white;
+  position: fixed;
+  right: 0px;
+  top: 100px
+
+}
+.button_show_panel span {
+  font-size: 25px;
 }
 
-.game_panel_unit_title {
-    color: black;
-    font-size: 20px;
-    text-align: center;
-    padding-top: 15px;
+.game_panel {
+  z-index: 70;
 }
 
-.panel_enemy_unit {
-    display: flex;
-    flex-direction: row;
-    padding-left: 25px;
+.panel_menu {
+  padding-top: 25px;
 }
-
-.panel_game_unit {
-    display: flex;
-    flex-direction: row;
-    padding-left: 25px;
-}
-</style>
+  </style>

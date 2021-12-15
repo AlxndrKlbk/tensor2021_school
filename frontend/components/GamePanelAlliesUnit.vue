@@ -1,7 +1,7 @@
 <template>
-  <div class="game_panel_enemy_unit">
-    <b-field label="Враг №1">
-      <div class="game_panel_enemy_unit_container">
+  <div class="game_panel_allies_unit">
+    <b-field label="Союзник 1">
+      <div class="game_panel_allies_unit_container">
         <div class="game_panel_form_item">
           <div class="title_counter_health">
             Здоровье
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style>
-.game_panel_enemy_unit {
+.game_panel_allies_unit {
   height: 50px;
   margin-top: 25px;
 }
@@ -36,7 +36,7 @@ export default {
   text-align: center;
 }
 
-.game_panel_enemy_unit_container {
+.game_panel_allies_unit_container {
   display: flex;
   flex-direction: column;
 }

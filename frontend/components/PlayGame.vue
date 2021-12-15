@@ -5,7 +5,7 @@
         Описание
       </div>
       <div class="article_scenario_container">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt voluptatibus dolor nisi deserunt asperiores inventore quas, commodi ipsa aliquid tempore quisquam dicta officiis quo, laborum assumenda. Voluptates, reprehenderit. Fugit, debitis nisi assumenda quo a iusto, ad ipsum consequatur perferendis corrupti, numquam saepe optio dolores incidunt ea delectus quia ab ducimus quibusdam sint. Doloremque possimus Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt voluptatibus dolor nisi deserunt asperiores inventore quas, commodi ipsa aliquid tempore quisquam dicta officiis quo, laborum assumenda. Voluptates, reprehenderit. Fugit, debitis nisi assumenda quo a iusto, ad ipsum consequatur perferendis corrupti, numquam saepe optio dolores incidunt ea delectus quia ab ducimus quibusdam sint. Doloremque possimus Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt voluptatibus dolor nisi deserunt asperiores inventore quas, commodi ipsa aliquid tempore quisquam dicta officiis quo, laborum assumenda. Voluptates, reprehenderit. Fugit, debitis nisi assumenda quo a iusto, ad ipsum consequatur perferendis corrupti, numquam saepe optio dolores incidunt ea delectus quia ab ducimus quibusdam sint. Doloremque possimus
+        {{ scenarioProp.articleScenario }}
       </div>
       <div class="panel_unit_control">
         <GamePanelUnit/>
@@ -17,7 +17,18 @@
 <script>
 import GamePanelUnit from "./GamePanelUnit.vue";
 export default {
-    components: { GamePanelUnit }
+    components: { GamePanelUnit },
+    props: {
+    scenarioProp: {
+      type: Object
+    }
+  },
+
+  data () {
+    return {
+      locationProp: this.scenarioProp.listLocation
+    }
+  }
 }
 </script>
 

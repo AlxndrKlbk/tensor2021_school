@@ -1,16 +1,27 @@
 <template>
   <div class="header">
     <div class="title_scenario">
-      Сценарий № 1
+      {{ scenarioProp.nameScenario }}
     </div>
-    <GameListLocation/>
+    <GameListLocation />
   </div>
 </template>
 
 <script>
 import GameListLocation from "./GameListLocation.vue";
 export default {
-    components: { GameListLocation }
+    components: { GameListLocation },
+    props: {
+    scenarioProp: {
+      type: Object
+    }
+  },
+
+  data () {
+    return {
+      locationProp: this.scenarioProp.listLocation
+    }
+  }
 }
 </script>
 
@@ -25,7 +36,7 @@ export default {
     background: #121212;
     justify-content: space-between;
     align-items: center;
-    z-index: 99;
+    z-index: 40;
     padding-right: 50px;
 }
 .title_scenario {

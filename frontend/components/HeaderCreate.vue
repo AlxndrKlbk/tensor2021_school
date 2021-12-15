@@ -27,7 +27,7 @@ export default {
     background: #121212;
     justify-content: end;
     align-items: center;
-    z-index: 99;
+    z-index: 60;
 }
 
 .button_save {
