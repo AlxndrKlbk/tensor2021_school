@@ -26,7 +26,6 @@ export default {
 
 <style>
 .game_panel_enemy_unit {
-  height: 50px;
   margin-top: 25px;
 }
 

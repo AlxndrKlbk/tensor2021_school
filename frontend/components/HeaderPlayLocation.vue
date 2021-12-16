@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="title_scenario">
-      {{ scenarioProp.nameScenario }}
+      {{ locationProp.namelocation }}
     </div>
     <GameListLocation :scenarioProp="scenarioProp" />
   </div>
@@ -11,11 +11,7 @@
 import GameListLocation from "./GameListLocation.vue";
 export default {
     components: { GameListLocation },
-    props: {
-    scenarioProp: {
-      type: Object
-    }
-  },
+    props: ['scenarioProp'],
 
   data () {
     return {

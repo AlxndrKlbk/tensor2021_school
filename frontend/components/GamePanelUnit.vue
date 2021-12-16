@@ -12,14 +12,11 @@
     >
       <div class="p-1">
         <h1>Панель управления юнитами</h1>
-        <b-menu class="panel_menu">
-          <b-menu-list label="Вражеские юниты">
-            <GamePanelEnemyUnit/>
-          </b-menu-list>
-          <b-menu-list label="Игровые юниты">
-            <GamePanelAlliesUnit/>
-          </b-menu-list>
-        </b-menu>
+
+        <GamePanelEnemyUnit/>
+
+        <GamePanelAlliesUnit/>
+        
       </div>
     </b-sidebar>
   </section>
@@ -46,13 +43,13 @@ export default {
 
 .button_show_panel {
   width: 15px;
-  background-color: rgb(61, 48, 19);
+  background-color: rgb(124, 97, 38);
   border: none;
-  z-index: 87;
+  z-index: 65;
   color: white;
   position: fixed;
   right: 0px;
-  top: 100px
+  top: 30px
 
 }
 .button_show_panel span {

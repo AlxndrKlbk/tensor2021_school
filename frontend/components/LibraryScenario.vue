@@ -1,6 +1,6 @@
 <template>
   <div class="library_scenario">
-    <CardScenario :scenarioProp="scenario" />
+    <CardScenario v-for="scenario in scenarioProp" :scenarioProp="scenarios" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   props: ['scenarioProp'],
   data () {
     return {
-      scenario: this.scenarioProp
+      scenarios: this.scenarioProp
     }
   }
 }

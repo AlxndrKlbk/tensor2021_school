@@ -57,6 +57,7 @@ export default {
     setDataScenario () {
       this.$store.commit('createScenario/setDataScenario', { nameScenario: this.nameScenario, articleScenario: this.articleScenario })
       this.$router.push('/libraryScenario')
+      // this.$store.dispatch('saveScenario')
     },
 
     onAddLocationClick () {

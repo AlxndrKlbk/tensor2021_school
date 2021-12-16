@@ -8,24 +8,17 @@
 <script>
 import HeaderPlay from '~/components/HeaderPlay.vue'
 export default {
-  props: {
-    scenarioProp: {
-      type: Object
-    }
-  },
   components: { HeaderPlay },
   layout: 'play',
   asyncData ({ store }) {
     const scenario = store.getters['createScenario/getScenario']
-    return {
-      scenario
-    }
+    return { scenario }
   },
   data () {
     return {
       scenario: null
     }
-  }
+}
 }
 </script>
 

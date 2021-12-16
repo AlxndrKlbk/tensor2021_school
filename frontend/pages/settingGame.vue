@@ -9,9 +9,7 @@ export default {
   layout: 'play',
   asyncData ({ store }) {
     const scenario = store.getters['createScenario/getScenario']
-    return {
-      scenario
-    }
+    return { scenario }
   },
   data () {
     return {
